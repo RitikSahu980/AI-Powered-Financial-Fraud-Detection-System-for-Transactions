@@ -19,6 +19,32 @@ React + Vite + Tailwind CSS
 
 The frontend communicates with the Spring Boot API. The backend orchestrates transaction processing, persistence, fraud prediction, risk classification, alerts, feedback, and payment workflows. The Python service exposes the ML prediction endpoint and does not access MongoDB directly.
 
+## 📸 Screenshots
+
+### Login
+
+![Login](screenshots/login.jpeg)
+
+### User Dashboard
+
+![User Dashboard](screenshots/User%20Dashboard.jpeg)
+
+### AI Fraud Simulator
+
+![AI Fraud Simulator](screenshots/Fraud%20Simulator.jpeg)
+
+### Admin Analytics Dashboard
+
+![Admin Analytics](screenshots/Admin%20Analytics.jpeg)
+
+### Fraud Monitoring Dashboard
+
+![Fraud Monitoring](screenshots/Monitoring%20Dashboard.jpeg)
+
+
+
+
+
 ## Tech Stack
 
 | Layer | Technologies |
