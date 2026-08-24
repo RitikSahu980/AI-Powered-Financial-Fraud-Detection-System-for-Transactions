@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', sans-serif;
+  }
+
+  body {
+    @apply bg-canvas text-ink;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  /* Visible keyboard focus everywhere - never suppressed for aesthetics. */
+  :focus-visible {
+    outline: 2px solid theme('colors.azure.DEFAULT');
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background-color: theme('colors.azure.100');
+    color: theme('colors.ink');
+  }
+
+  /* Tabular numbers everywhere data appears, so figures in tables and
+     stat cards align on their digits instead of jittering. */
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-white/70 backdrop-blur-md border border-white/40;
+  }
+
+  .glass-dark {
+    @apply bg-navy-mid/60 backdrop-blur-md border border-white/10;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    @apply bg-slate-300 rounded-full;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

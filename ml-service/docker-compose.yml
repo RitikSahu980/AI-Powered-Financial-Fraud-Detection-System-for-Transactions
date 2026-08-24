@@ -1,0 +1,31 @@
+services:
+  ml-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: fraud-detection-ml-service:local
+    container_name: fraud-detection-ml-service
+    ports:
+      - "8000:8000"
+    environment:
+      - MODEL_PATH=online_payment_fraud_detection_model.pkl
+      - MODEL_VERSION=xgboost_v1
+      - LOG_LEVEL=INFO
+      - HOST=0.0.0.0
+      - PORT=8000
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health').read()"]
+      interval: 30s
+      timeout: 5s
+      start_period: 15s
+      retries: 3
+    restart: unless-stopped
+
+# Notes for integrating with the rest of the stack (Spring Boot, MongoDB,
+# Node.js Gateway, React) once those services are implemented:
+#   - This service is called ONLY by Spring Boot, per the frozen contract's
+#     architecture. It should not be placed on a network segment reachable
+#     directly by the Node.js gateway or the frontend.
+#   - Spring Boot should reach this service at http://ml-service:8000/predict
+#     when composed together in a shared docker-compose network, or via
+#     whatever internal DNS/service-discovery name the deployment target uses.

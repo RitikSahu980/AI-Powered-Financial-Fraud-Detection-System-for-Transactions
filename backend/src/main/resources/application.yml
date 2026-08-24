@@ -1,0 +1,49 @@
+spring:
+  application:
+    name: fraud-detection-backend
+
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/fraud_detection?retryWrites=false
+      auto-index-creation: true
+
+razorpay:
+  key-id: ${RAZORPAY_KEY_ID:}
+  key-secret: ${RAZORPAY_KEY_SECRET:}
+
+server:
+  port: ${SERVER_PORT:8080}
+  error:
+    include-message: never
+    include-stacktrace: never
+    include-binding-errors: never
+
+ml-service:
+  base-url: http://localhost:8000
+  predict-path: /predict
+  health-path: /health
+  connect-timeout-ms: ${ML_SERVICE_CONNECT_TIMEOUT_MS:2000}
+  response-timeout-ms: ${ML_SERVICE_RESPONSE_TIMEOUT_MS:10000}
+
+risk:
+  thresholds:
+    medium-risk-min-probability: ${RISK_THRESHOLD_MEDIUM:0.20}
+    high-risk-min-probability: ${RISK_THRESHOLD_HIGH:0.50}
+
+model:
+  active-version: ${ACTIVE_MODEL_VERSION:xgboost_v2}
+
+logging:
+  level:
+    root: INFO
+    com.frauddetection.backend: INFO
+    org.springframework.data.mongodb.core.MongoTemplate: WARN
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: never

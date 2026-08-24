@@ -1,0 +1,11 @@
+spring:
+  data:
+    mongodb:
+      uri: ${MONGODB_URI:mongodb://mongo:27017/fraud_detection}
+
+ml-service:
+  base-url: ${ML_SERVICE_BASE_URL:http://ml-service:8000}
+
+logging:
+  level:
+    com.frauddetection.backend: INFO

@@ -1,0 +1,12 @@
+spring:
+  data:
+    mongodb:
+      uri: ${MONGODB_URI:mongodb://localhost:27017/fraud_detection_dev}
+
+ml-service:
+  base-url: ${ML_SERVICE_BASE_URL:http://localhost:8000}
+
+logging:
+  level:
+    com.frauddetection.backend: DEBUG
+    reactor.netty.http.client: INFO

@@ -1,0 +1,41 @@
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Java / Maven
+**/target/
+*.class
+*.log
+.mvn/wrapper/maven-wrapper.jar
+
+# IDEs
+.idea/
+.vscode/
+*.iml
+.classpath
+.project
+.factorypath
+.settings/
+.metadata/
+
+# Node / Vite
+**/node_modules/
+**/dist/
+dist-ssr/
+*.local
+
+# Python
+**/__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local/generated outputs
+coverage/
+*.tmp
